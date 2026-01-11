@@ -1,0 +1,86 @@
+---
+const products = [
+  {
+    name: "ハローライト",
+    type: "電球型",
+    initialCost: "10,780円~",
+    monthlyCost: "約500円~ (法人/プランによる)",
+    wifi: "不要 (SIM内蔵)",
+    install: "電球交換のみ",
+    notification: "メール",
+    cons: "詳細な行動は不明",
+  },
+  {
+    name: "象印 みまもりほっとライン",
+    type: "ポット型",
+    initialCost: "5,500円",
+    monthlyCost: "3,300円",
+    wifi: "不要 (無線内蔵)",
+    install: "置くだけ",
+    notification: "メール/アプリ",
+    cons: "ポットを使わないとダメ",
+  },
+  {
+    name: "LASHIC (ラシク)",
+    type: "センサー型",
+    initialCost: "要確認 (プランによる)",
+    monthlyCost: "要確認",
+    wifi: "必須 (一部モデル除く)",
+    install: "センサー設置",
+    notification: "アプリ通知",
+    cons: "WiFiが必要な場合あり",
+  },
+  {
+    name: "大手キャリア (ドコモ等)",
+    type: "センサー/ハブ型",
+    initialCost: "キャンペーン等による",
+    monthlyCost: "他より高めの傾向",
+    wifi: "不要 (セルラー版あり)",
+    install: "コンセント等",
+    notification: "アプリ/メール",
+    cons: "契約手続きが少し複雑",
+  },
+];
+---
+
+<div class="overflow-x-auto my-8">
+  <table class="min-w-full bg-white border border-gray-200">
+    <thead>
+      <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left whitespace-nowrap">製品名</th>
+        <th class="py-3 px-6 text-left whitespace-nowrap">タイプ</th>
+        <th class="py-3 px-6 text-center whitespace-nowrap">初期費用</th>
+        <th class="py-3 px-6 text-center whitespace-nowrap">月額料金</th>
+        <th class="py-3 px-6 text-center whitespace-nowrap">Wi-Fi</th>
+        <th class="py-3 px-6 text-center whitespace-nowrap">設置</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm font-light">
+      {products.map((product) => (
+        <tr class="border-b border-gray-200 hover:bg-gray-100">
+          <td class="py-3 px-6 text-left whitespace-nowrap font-bold">
+            {product.name}
+          </td>
+          <td class="py-3 px-6 text-left whitespace-nowrap">
+            {product.type}
+          </td>
+          <td class="py-3 px-6 text-center whitespace-nowrap">
+            {product.initialCost}
+          </td>
+          <td class="py-3 px-6 text-center whitespace-nowrap">
+            {product.monthlyCost}
+          </td>
+          <td class="py-3 px-6 text-center whitespace-nowrap">
+            <span class={product.wifi.includes("不要") ? "bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs" : "bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs"}>
+              {product.wifi}
+            </span>
+          </td>
+          <td class="py-3 px-6 text-center whitespace-nowrap">
+            {product.install}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="text-xs text-right text-gray-500 mt-2">※料金は2026年1月時点の調査に基づく目安です。最新情報は各公式サイトをご確認ください。</p>
+</div>
